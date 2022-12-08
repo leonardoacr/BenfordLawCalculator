@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Benford Law Analyser</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Favicons -->
+    <link rel="icon" href="./assets/css/img/favicon.png" sizes="32x32" type="image/png">
+    <!-- Chart website -->
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+</head>
+
+<body class="main">
+    <div class="container">
+        <div class="card card-chart">
+            <div class="text-area">
+                <div class="header">
+                    <h1 class="fs-1">Benford Law: Data Analyser</h1>
+                    <button class="theme-btn btn btn-outline-dark" onClick="changeTheme()">Change Theme</button>
+                </div>
+                <span class="submit-text">Submit ".txt" file. Variables must be in vertical sequence, without any kind
+                    of extra
+                    characters.</span>
+                <a href="./assets/data.txt" download>
+                    Download example.
+                </a>
+            </div>
+            <div>
+                <form class="input-file" action="">
+                    <!-- <input type="file" id="files"> -->
+                    <div class="file-upload-box">
+                        <label for="file-upload" class="custom-file-upload btn btn-secondary">
+                            Upload File
+                        </label>
+                        <input id="file-upload" type="file" />
+                        <span id="fileStatus">Empty</span>
+                    </div>
+                    <div class="reset-btn-box">
+                        <button class="reset-btn btn btn-secondary" onClick="resetForm()">Reset algorithm</button>
+                    </div>
+                </form>
+                <textarea hidden="hidden" cols="10" rows="1"></textarea>
+            </div>
+            <div class="card-body">
+                <canvas class="chart-area" id="myChart"></canvas>
+            </div>
+            <div id="dataTable">
+            </div>
+            <script src="./assets/js/index.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+                crossorigin="anonymous"></script>
+        </div>
+    </div>
+</body>
+
+</html>

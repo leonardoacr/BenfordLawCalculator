@@ -1,0 +1,83 @@
+:root {
+    --colorRoot: #ffffff;
+  }
+
+body {
+    background-image: url("img/background-img.jpg");
+    background-attachment: scroll;
+    background-blend-mode: normal;
+    /* background-color: rgb(199, 38, 38); */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    color: var(--colorRoot);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+}
+
+.theme-btn {
+    margin-top: 0.5rem;
+    height: 50%;
+    opacity: 1;
+    color:  var(--colorRoot);
+}
+
+.card {
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, .5);
+    /* background: invert(var(--colorRoot)); */
+    width: 65%;
+    padding: 1%;
+}
+
+.input-file {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.reset-btn-box {
+    margin-right: 1rem;
+}
+
+.table {
+    margin-left: 3%;
+    margin-top: 1%;
+    width: 94%;
+    text-align: center;
+    color: var(--colorRoot);
+}
+
+.box-BLVerify {
+    /* background-color: #ffffff; */
+    display: flex;
+    justify-content: center;
+    margin-top: 1.6rem;
+}
+
+.BLVerify {
+    display: grid;
+    text-align: center;
+    border: solid 0px;
+    border-radius: 16px;
+    width: 20rem;
+    background-color: rgba(70, 68, 69, 0.5); 
+}
+
+.text-about {
+    /* background-color: rgba(70, 68, 69, 0.5);  */
+    padding-left: 1rem;
+    padding-right: 1.2rem;
+    width: 100%;
+}
