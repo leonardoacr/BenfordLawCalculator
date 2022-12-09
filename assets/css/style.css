@@ -9,12 +9,6 @@
     }
 }
 
-/* For desktop: */
-/* @media screen and (min-width:768px) {
-    div.data-table {
-    }
-} */
-
 @media screen and (min-width:1280px) {
     div.data-table {
         font-size: 1rem;
@@ -27,7 +21,6 @@ body {
     background-attachment: scroll;
     background-blend-mode: normal;
     font-size: 1rem;
-    /* background-color: rgb(199, 38, 38); */
 }
 
 .container {
@@ -36,14 +29,12 @@ body {
     margin-top: 1rem;
     min-width: 20rem;
     max-width: 85rem;
-    /* width: 100rem; */
     color: var(--colorRoot);
 }
 
 .header {
     display: flex;
     justify-content: space-between;
-    /* margin-right: 1rem; */
 }
 
 .theme-btn {
@@ -81,7 +72,6 @@ input[type="file"] {
 }
 
 .reset-btn-box {
-    /* margin-right: 1rem; */
     min-width: 9rem;
 }
 
@@ -91,11 +81,8 @@ input[type="file"] {
 
 .table-box {
     display: grid;
-    /* width: 43rem; */
     justify-content: center;
     align-items: center;
-    /* background-color: brown; */
-    /* max-width: 100rem; */
 }
 
 .table {
@@ -103,28 +90,16 @@ input[type="file"] {
     margin-top: 1rem;
     text-align: center;
     color: var(--colorRoot);
-
-    /* width: 0.1rem; */
-    /* max-width: 1rem; */
-    /* background-color: rgb(64, 0, 116); */
-    /* max-width: 10rem; */
 }
 
 #dataTable {
     padding: 1rem;
     justify-content: center;
-    /* topo | direita | inferior | esquerda */
+    /* top | left | bottom | right */
     margin: 0rem 0rem 0rem -2rem;
-    /* width: calc(10rem + 35vw); */
-    /* max-width: 17rem; */
-    /* font-size: 10px; */
-    /* font-size: calc(8px + 0.60625vw); */
-    /* font-size: max(0.3rem, 1rem); */
-    /* background-color: brown; */
 }
 
 .box-BLVerify {
-    /* background-color: #ffffff; */
     display: flex;
     justify-content: center;
     margin-top: -1.6rem;
@@ -140,7 +115,6 @@ input[type="file"] {
 }
 
 .text-about {
-    /* background-color: rgba(70, 68, 69, 0.5);  */
     margin-top: 1.6rem;
     padding-left: 1rem;
     padding-right: 1.2rem;
