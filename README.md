@@ -1,4 +1,4 @@
-# BenfordLawCalculator
+# BenfordLaw
 
 Live website:
 https://leonardoacr.github.io/BenfordLawCalculator/
