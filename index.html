@@ -21,7 +21,8 @@
             <div class="text-area">
                 <div class="header">
                     <h1 class="fs-1">Benford Law: Data Analyser</h1>
-                    <button class="theme-btn btn btn-outline-dark" onClick="changeTheme()">Change Theme</button>
+                    <button class="theme-btn btn" onClick="changeTheme()">Change Theme</button>
+                    <!-- btn-outline-dark -->
                 </div>
                 <span class="submit-text">Submit ".txt" file. Variables must be in vertical sequence, without any kind
                     of extra
@@ -39,6 +40,9 @@
                         </label>
                         <input id="file-upload" type="file" />
                         <span id="fileStatus">Empty</span>
+                    </div>
+                    <div class="example-btn-box" id="exampleBtn">
+                        <button class="example-btn btn btn-outline-light" onClick="exampleBtn(); return false;">Use Example</button>
                     </div>
                     <div class="reset-btn-box">
                         <button class="reset-btn btn btn-secondary" onClick="resetForm()">Reset algorithm</button>

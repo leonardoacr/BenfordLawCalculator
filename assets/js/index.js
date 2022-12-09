@@ -1,6 +1,6 @@
 // define inputs from HTML
 let input = document.querySelector('input');
-let textarea = document.querySelector('textarea');
+let example = document.getElementById('exampleBtn');
 const ctx = document.getElementById('myChart');
 
 // define global variables
@@ -11,6 +11,7 @@ let rows = [], rowsBL = [], xAxis = [], rowsPercentage = [], rowsBLPercentage = 
 let chiSquaredStat = [], chiSquaredStatSum, pValueFinal, chiFlag, pValueFlag;
 let sum;
 let myChart;
+var flagExample = 0;
 
 // define reset button from HTML
 const resetBtnBox = document.querySelector(".reset-btn-box");
@@ -20,10 +21,27 @@ resetBtnBox.hidden = true;
 const fileStatus = document.getElementById('fileStatus');
 fileStatus.textContent = 'Empty';
 
+// example.addEventListener('click', () => {
+//   example.hidden = true;
+//   //Read InsideFolder.txt File
+//   flagExample = 1;
+// });
+
+const exampleBtn = () => {
+  
+  (async () => {
+    example.hidden = true;
+    resetBtnBox.hidden = false;
+    let dataExampleArray = await dataExample();
+    benfordLaw(dataExampleArray[0]);
+  })();
+}
+
 // detects if something was submited
 input.addEventListener('change', () => {
+  example.hidden = true;
   let files = input.files; // define files coming from HTML
-
+  // console.log('TESTE')
   if (files.length == 0) return; // return function if array size is empty
 
   file = files[0];
@@ -34,28 +52,30 @@ input.addEventListener('change', () => {
     fileStatus.textContent = input.value.split(/(\\|\/)/g).pop(); // format the file
     resetBtnBox.hidden = false; // show reset button
     file = e.target.result; // file now is replaced with the actual data
-    lines = file.split(/\r\n|\n/); // more formatting
 
-    lines.forEach((el, i) => {
-      dataArray[i] = parseFloat(el.split(',').join(''));
-      console.log(dataArray[i])
-    }); // just replace lines with dataArray for easy reading/
-    console.log(dataArray)
-    console.log(lines)
-    // for that will take care of Benford law's algorithm 
-    for (let data of dataArray) {
-      getFirstPosition(data);
-      verifyFirstPosition(firstPosition);
-    }
-    // plot the graph 
-    plotGraph(n);
+    benfordLaw(file);
   };
-
   // verify error
   reader.onerror = (e) => alert(e.target.error.name);
   // plot text on the reader
   reader.readAsText(file)
 });
+
+function benfordLaw(file) {
+  lines = file.split(/\r\n|\n/); // more formatting
+
+  lines.forEach((el, i) => {
+    dataArray[i] = parseFloat(el.split(',').join(''));
+    // console.log(dataArray[i])
+  }); // just replace lines with dataArray for easy reading/
+  // for that will take care of Benford law's algorithm 
+  for (let data of dataArray) {
+    getFirstPosition(data);
+    verifyFirstPosition(firstPosition);
+  }
+  // plot the graph 
+  plotGraph(n);
+}
 
 function getFirstPosition(data) {
   absData = Math.abs(parseInt(data));
@@ -93,8 +113,8 @@ function plotGraph(n) {
     // tests with chiSquared and pValue
     chiFlag = chiSquaredStatSum > 20.09 ? 'Failed' : 'Passed';
     pValueFlag = pValueFinal > 5 ? 'Passed' : 'Failed';
-    console.log(chiFlag)
-    console.log(pValueFlag)
+    // console.log(chiFlag)
+    // console.log(pValueFlag)
     createBarChart(rows, rowsBL, xAxis);
     insertTable();
   });
@@ -169,9 +189,9 @@ const insertTable = () => {
 <br>
 </div>`
 
-const dataFooter = document.getElementById("dataFooter");
-dataFooter.innerHTML =
-`<div class="box-BLVerify">
+  const dataFooter = document.getElementById("dataFooter");
+  dataFooter.innerHTML =
+    `<div class="box-BLVerify">
 <div class="BLVerify">
 ${chiFlag === 'Passed' ?
       `<span class="footer-table fs-6 fw">Total Chi-Squared Stat: ${Number(chiSquaredStatSum).toFixed(2)}% &check;</span>` :
@@ -187,9 +207,9 @@ ${pValueFlag === 'Passed' ?
 <div class="text-about">
 <p> Conclusion:
 ${(chiFlag === 'Passed' && pValueFlag === 'Passed') ?
-'The data was validated according to Benford Law theory and it has high chances to be a natural sequence.' :
-'The data was not validated according to Benford Law theory and it is probably not natural sequence.'
-}
+      'The data was validated according to Benford Law theory and it has high chances to be a natural sequence.' :
+      'The data was not validated according to Benford Law theory and it is probably not natural sequence.'
+    }
 <br>
 <br>
 The Benford's Law validation here is made considering when the Total Chi-Squared Stat is lower than 20% and 
@@ -221,16 +241,13 @@ function loopTable() {
     <td>${Number(errorBL[i - 1]).toFixed(2)}</td>
     <td>${Number(chiSquaredStat[i - 1]).toFixed(2)}</td>
     <td>
-    ${Number(chiSquaredStat[i - 1]).toFixed(2) > 20.09/9 ?
-    ' &#10006;' : ' &check;'
-    }
+    ${Number(chiSquaredStat[i - 1]).toFixed(2) > 20.09 / 9 ?
+        ' &#10006;' : ' &check;'
+      }
     </td>
     </tr>`;
     tableSum += tableArray[i - 1];
   }
-
-  // const target = ',';
-  // const filteredTableArray = tableArray.filter(el => el !== target);
   return tableSum;
 }
 
@@ -369,3 +386,63 @@ function gser(n, x) {
   return sum * Math.exp(-x + a * Math.log(x) - gln);
 }
 
+async function dataExample() {
+  return (
+    [
+      ` 331,893,745
+5,039,877
+732,673
+7,276,316
+3,025,891
+39,237,836
+5,812,069
+3,605,597
+1,003,384
+670,050
+21,781,128
+10,799,566
+1,441,553
+1,900,923
+12,671,469
+6,805,985
+3,193,079
+2,934,582
+4,509,394
+4,624,047
+1,372,247
+6,165,129
+6,984,723
+10,050,811
+5,707,390
+2,949,965
+6,168,187
+1,104,271
+1,963,692
+3,143,991
+1,388,992
+9,267,130
+2,115,877
+19,835,913
+10,551,162
+774,948
+11,780,017
+3,986,639
+4,246,155
+12,964,056
+1,095,610
+5,190,705
+895,376
+6,975,218
+29,527,941
+3,337,975
+645,570
+8,642,274
+7,738,692
+1,782,959
+5,895,908
+578,803
+3,263,584
+      `
+    ]
+  )
+}
