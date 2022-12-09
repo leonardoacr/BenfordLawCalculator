@@ -166,7 +166,12 @@ const insertTable = () => {
   ${(function fun() { return loopTable() })()}
   </tbody>
 </table>
-<div class="box-BLVerify">
+<br>
+</div>`
+
+const dataFooter = document.getElementById("dataFooter");
+dataFooter.innerHTML =
+`<div class="box-BLVerify">
 <div class="BLVerify">
 ${chiFlag === 'Passed' ?
       `<span class="footer-table fs-6 fw">Total Chi-Squared Stat: ${Number(chiSquaredStatSum).toFixed(2)}% &check;</span>` :
@@ -179,7 +184,6 @@ ${pValueFlag === 'Passed' ?
     }
 </div>
 </div>
-<br>
 <div class="text-about">
 <p> Conclusion:
 ${(chiFlag === 'Passed' && pValueFlag === 'Passed') ?
