@@ -1,5 +1,4 @@
 # BenfordLawCalculator
-Complete website with algorithm to insert data and verify if it passes on Benford Law's validation. 
 
 Live website:
 https://leonardoacr.github.io/BenfordLawCalculator/
